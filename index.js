@@ -166,9 +166,14 @@ if (infoUser) {
     form0.remove()
     finale.remove()
     finale1.remove()
-    final_answer.innerHTML = `Thank you for choosing us, ${infoUser1.name}. Next, you will find the final budget review. <br>
+    final_answer.innerHTML = `<p>Thank you for choosing us, ${infoUser1.name}. Next, you will find the final budget review.</p> <br>
 
-    To stay ${infoUser1.days} days on ${country0.destination}, ${country0.country} during ${season0.called} for ${infoUser1.travelers} travelers, we recommend a budget of USD ${finalBudget} to cover accommodation, food, and transportation expenses. Also, we estimate that you may need USD ${finalFlight} approx for flight tickets. The total budget is USD ${finalMoney}.
+    <p>To stay ${infoUser1.days} days on ${country0.destination}, ${country0.country} during ${season0.called} for ${infoUser1.travelers} travelers, we recommend a budget of USD ${finalBudget} to cover accommodation, food, and transportation expenses. Also, we estimate that you may need USD ${finalFlight} approx for flight tickets departing from El Dorado - Bogota. </p>
+    <br>
+    <p>The total budget is <b> USD ${finalMoney}.</b></p>
     <br> 
-    Moreover, here is some information to have in mind for your trip to ${country0.destination}, ${country0.country}: The estimated time of flight is ${country0.hours} hours, you will arrive to ${country0.airport} and the local currency will be ${country0.currency}.`;
+    <p>Moreover, here is some information to have in mind for your trip to ${country0.destination}, ${country0.country}: The estimated time of flight is ${country0.hours} hours, you will arrive to ${country0.airport} and the local currency will be ${country0.currency}.</p>
+    <br>
+    <p>We hope this information is useful for you.</p>
+    `;
 }
