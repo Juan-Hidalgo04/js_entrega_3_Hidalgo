@@ -33,7 +33,7 @@ const countries = [Argentina, Brazil, Chile, Mexico, Dominican]
 const selectNodeDestination = document.querySelector('#destination')
 countries.forEach((p)=> {
     const optionDest = document.createElement('option')
-    optionDest.innerText = `${p.destination}, ${p.country}`
+    optionDest.innerText = `${p.destination}`  // , ${p.country}
     optionDest.setAttribute('id',p.id)
     selectNodeDestination.append(optionDest)
 })
@@ -75,6 +75,8 @@ const inputTravelers= document.getElementById('travelers')
 const inputDays= document.getElementById('days')
 const inputDate = document.getElementById('date')
 
+// console.log(inputEmail);
+
 // Click sobre el botón Submit. 
 
 form0.onsubmit = (e) => {
@@ -88,10 +90,16 @@ form0.onsubmit = (e) => {
         days: inputDays.value,
         Date: inputDate.value
     }
-    localStorage.setItem('infoUser',JSON.stringify(infoUser))
-    console.log(infoUser);
+
+    const infoUserJSON = JSON.stringify(infoUser);
+    console.log(infoUserJSON);
+    localStorage.setItem('infoUser',infoUserJSON);
+    
 }
 
+
+
+// Botón para limpiar el localstorage. 
 const addButtonClear = document.querySelector('#clear')
 addButtonClear.addEventListener('click', function(){
     localStorage.clear();
@@ -121,24 +129,52 @@ function calcu(n1, n2, fn) {
 
 // Uso de Function 
 
-// const finalFlight = calcu(calcu(country.flight,season.value,mult),travelers,mult)
-// const finalBudget = calcu(calcu(calcu(country.budget,season.value,mult),travelers,mult),days,mult)
-// const finalMoney = calcu(finalBudget,finalFlight,sum)
 
-// console.log(finalBudget, finalFlight, finalMoney)
 
+const infoUser0 = localStorage.getItem('infoUser')
+console.log(infoUser0);
+const infoUser1 = JSON.parse(infoUser0)
+console.log(infoUser1);
+
+console.log(infoUser1.season);
+
+    const country0 = countries.find(c => {
+        return c.destination === infoUser1.destination
+    })
+
+    console.log(country0);
+   
+    const season0 = seasons.find(s => {
+        return s.called === infoUser1.season
+    })
+
+    console.log(season0);
+
+const finalFlight = calcu(calcu(country0.flight,season0.value,mult),infoUser1.travelers,mult)
+const finalBudget = calcu(calcu(calcu(country0.budget,season0.value,mult),infoUser1.travelers,mult),infoUser1.days,mult)
+const finalMoney = calcu(finalBudget,finalFlight,sum)
+
+console.log(finalBudget, finalFlight, finalMoney)
+
+
+// const finalFlight0 = calcu(calcu(country[]))
+
+// console.log(finalFlight0);
 
 
 // Mirar si en storage existe infoUser
+
+let final_answer = document.getElementById("final_answer");
 
 const infoUser = localStorage.getItem('infoUser')
 const infoUserJS = JSON.parse(infoUser)
 if(infoUser){
     form0.remove()
     finale.remove()
-    edit.innerText = `Thank you for choosing us, ${infoUserJS.name}. Next, you will find the final budget review.
+    finale1.remove()
+    final_answer.innerHTML = `Thank you for choosing us, ${infoUser1.name}. Next, you will find the final budget review.
 
-    To stay ${infoUserJS.days} days on ${infoUserJS.destination}, ${infoUserJS.country} during ${infoUserJS.season} for ${infoUserJS.travelers} travelers, we recommend a budget of USD ${finalBudget} to cover accommodation, food, and transportation expenses. Also, we estimate that you may need USD ${finalFlight} approx for flight tickets. The total budget is USD ${finalMoney}.
+    To stay ${infoUser1.days} days on ${country0.destination}, ${country0.country} during ${season0.called} for ${infoUser1.travelers} travelers, we recommend a budget of USD ${finalBudget} to cover accommodation, food, and transportation expenses. Also, we estimate that you may need USD ${finalFlight} approx for flight tickets. The total budget is USD ${finalMoney}.
     
-    Moreover, here is some information to have in mind for your trip to ${country.destination}, ${country.country}: The estimated time of flight is ${country.hours} hours, you will arrive to ${country.airport} and the local currency will be ${country.currency}.`
-}
+    Moreover, here is some information to have in mind for your trip to ${country0.destination}, ${country0.country}: The estimated time of flight is ${country0.hours} hours, you will arrive to ${country0.airport} and the local currency will be ${country0.currency}.`; 
+ }

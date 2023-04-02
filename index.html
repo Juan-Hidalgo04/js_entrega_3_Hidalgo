@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head> 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@
       <video src="./assets/images/typing.mp4" autoplay muted class="card-img-top container-fluid my-2"
         alt="typing"></video>
       <div class="card-body justify">
-        <p id="edit">Hi, we’re <b> Juan & Emi </b> from <strong> Water in the Shoes. </strong></p>
+        <p id="finale1">Hi, we’re <b> Juan & Emi </b> from <strong> Water in the Shoes. </strong></p>
         <br />
         <p class="card-text" id="finale">We live by the motto <strong> “Adventure is for Everyone” </strong> because we
           believe that you
@@ -41,6 +41,7 @@
           need is
           the desire to achieve something <i> more!</i></p>
         <br />
+        <p id="final_answer"></p>
       </div>
     </div>
 
@@ -67,30 +68,31 @@
             <label for="season" class="form-label">Season you will be traveling on</label>
             <select class="form-select" aria-label="Default select example" id="season" name="season">
               <option selected disabled>Open this select menu</option>
-              <!-- <option value="0">Low Season</option>
-                    <option value="1">Shoulder Season</option>
-                    <option value="2">High Season</option> -->
+              
             </select>
           </div>
           <div class="mb-3">
             <label for="travelers" class="form-label">Number of Travelers (Above 2 yo)</label>
-            <input type="number" class="form-control" id="travelers">
+            <input type="number" class="form-control" id="travelers" min="1" value="1">
           </div>
           <div class="mb-3">
             <label for="days" class="form-label">Number of days in Destination</label>
-            <input type="number" class="form-control" id="days">
+            <input type="number" class="form-control" id="days" min="1" value="1">
           </div>
           <div class="mb-3">
             <label for="date" class="form-label">Date you plan to travel</label>
             <input type="date" class="form-control" name="date" id="date">
           </div>
           <div class="d-grid gap-2 row">
-
-            <input type="submit" value="Submit" class="btn btn-info col-sm-6 offset-sm-3 btn-primary">
+            <button type="submit" value="Submit" id="addInfo" class="btn btn-info col-sm-6 offset-sm-3 btn-primary">Submit</button>
+            <!-- <input type="submit" value="Submit" class="btn btn-info col-sm-6 offset-sm-3 btn-primary"> -->
 
           </div>
         </form>
-        <input type="Clear" value="Clear" id="clear" class="btn btn-light col-sm-6 offset-sm-3 btn-secondary">
+        <div class="d-grid gap-2 row">
+          <!-- <input type="Clear" value="Clear" id="clear" class="btn btn-light col-sm-6 offset-sm-3 btn-secondary"> -->
+          <button type="reset" value="Clear" id="clear" class="btn btn-light col-sm-6 offset-sm-3 btn-secondary">Clear</button>
+        </div>
       </fieldset>
 
     </section>
